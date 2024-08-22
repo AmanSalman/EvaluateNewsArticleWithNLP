@@ -1,0 +1,67 @@
+const express = require('express');
+const axios = require('axios');
+const path = require('path');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+
+const app = express();
+const port = 8080;
+
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '../../dist')));
+dotenv.config();
+
+// const API_KEY = '1dcc4140bccf0f40a12e0a78a011bbf3';
+// //const API_KEY = 'cc0c464428a80eb82e2e7554e3f86d4b';
+// const API_KEY = process.env.MEANINGCLOUD_API_KEY;
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../dist/index.html'));
+});
+
+app.post('/analyze', async (req, res) => {
+  const { url } = req.body;
+  if (!url) {
+    return res.status(400).json({ message: 'URL is required' });
+  }
+
+  try {
+    const response = await axios.post('https://api.meaningcloud.com/sentiment-2.1', null, {
+      params: {
+        key: API_KEY,
+        url: url,
+        lang: 'en',
+      },
+    });
+
+    const { data } = response;
+
+    if (data.status.code === '0') {
+      const result = {
+        agreement: data.agreement || 'N/A',
+        confidence: data.confidence || 'N/A',
+        irony: data.irony || 'N/A',
+        model: data.model || 'N/A',
+        scoreTag: data.score_tag || 'N/A',
+        subjectivity: data.subjectivity || 'N/A',
+      };
+
+      res.json(result);
+    } else {
+      console.log(data.status.msg);
+      res.status(400).json({ message: data.status.msg });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+app.listen(port, () => {
+  console.log(API_KEY)
+    console.log(`Server running at http://localhost:${port}`);
+});

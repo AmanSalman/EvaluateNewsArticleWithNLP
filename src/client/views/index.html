@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Natural Language Processing Tool</title>
+	</head>
+	<body>
+		<header>
+			<h1>🌟 NLP Magic Tool 🌟</h1>
+		</header>
+		<main>
+			<form id="form-section">
+				<h2>🔍 Analyze Your Article</h2>
+				<input type="text" id="article-url" placeholder="Paste your article URL here..."/>
+				<button id="analyze-btn">✨ Analyze Now ✨</button>
+			</form>
+			<section id="results-section">
+				<h2>📊 Analysis Results</h2>
+				<p id="agreement"></p>
+				<p id="confidence"></p>
+				<p id="irony"></p>
+				<p id="score_tag"></p>
+				<p id="subjectivity"></p>
+			</section>
+		</main>
+		<footer>
+			<p>&copy; 2024 NLP Tool. All rights reserved.</p>
+		</footer>
+		<script src="bundle.js"></script>
+		<!-- <script>
+		      if ('serviceWorker' in navigator) {
+		          window.addEventListener('load', () => {
+		              navigator.serviceWorker.register('/service-worker.js');
+		          });
+		      }
+		  </script> -->
+	</body>
+</html>
