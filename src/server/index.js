@@ -50,17 +50,14 @@ app.post('/analyze', async (req, res) => {
 
       res.json(result);
     } else {
-      console.log(data.status.msg);
       res.status(400).json({ message: data.status.msg });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: error.message });
   }
 });
 
 
 app.listen(port, () => {
-  console.log(API_KEY)
     console.log(`Server running at http://localhost:${port}`);
 });
