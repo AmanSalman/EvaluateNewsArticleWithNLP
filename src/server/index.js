@@ -14,9 +14,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../dist')));
 dotenv.config();
 
-// const API_KEY = '1dcc4140bccf0f40a12e0a78a011bbf3';
-// //const API_KEY = 'cc0c464428a80eb82e2e7554e3f86d4b';
-// const API_KEY = process.env.MEANINGCLOUD_API_KEY;
+
+const API_KEY = process.env.MEANINGCLOUD_API_KEY;
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/index.html'));
