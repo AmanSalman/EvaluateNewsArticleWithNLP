@@ -15,7 +15,6 @@ async function handleSubmit(event) {
 
       updateResults(data);
     } catch (error) {
-      console.error('Axios Error:', error); // Log the error for debugging
       const errorMessage = error.response ? error.response.data.message : error.message;
       document.getElementById('results-section').innerHTML = `<p>Error: ${errorMessage}</p>`;
     }
