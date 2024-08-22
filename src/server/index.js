@@ -14,9 +14,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../dist')));
 dotenv.config();
 
-// const API_KEY = '1dcc4140bccf0f40a12e0a78a011bbf3';
-// //const API_KEY = 'cc0c464428a80eb82e2e7554e3f86d4b';
-// const API_KEY = process.env.MEANINGCLOUD_API_KEY;
+
+const API_KEY = process.env.MEANINGCLOUD_API_KEY;
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/index.html'));
@@ -51,17 +50,14 @@ app.post('/analyze', async (req, res) => {
 
       res.json(result);
     } else {
-      console.log(data.status.msg);
       res.status(400).json({ message: data.status.msg });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: error.message });
   }
 });
 
 
 app.listen(port, () => {
-  console.log(API_KEY)
     console.log(`Server running at http://localhost:${port}`);
 });
