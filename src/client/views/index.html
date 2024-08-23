@@ -28,6 +28,7 @@
 		<footer>
 			<p>&copy; Aman Salman. All rights reserved.</p>
 		</footer>
+<<<<<<< HEAD
 		<script>
 			if ('serviceWorker' in navigator) {
 				window.addEventListener('load', () => {
@@ -35,5 +36,15 @@
 				});
 			}
 		</script>
+=======
+		<script src="bundle.js"></script>
+		<script>
+		      if ('serviceWorker' in navigator) {
+		          window.addEventListener('load', () => {
+		              navigator.serviceWorker.register('/service-worker.js');
+		          });
+		      }
+		  </script>
+>>>>>>> 043f947da8cdf7e26323a18b5a82ce15d8432aec
 	</body>
 </html>
