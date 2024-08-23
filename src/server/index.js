@@ -6,13 +6,13 @@ const dotenv = require('dotenv');
 
 
 const app = express();
-const port = 8080;
-
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../dist')));
 dotenv.config();
+
+const port = parseInt(process.env.PORT) || 8000;
 
 
 const API_KEY = process.env.MEANINGCLOUD_API_KEY;

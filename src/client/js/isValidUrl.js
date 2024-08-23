@@ -1,4 +1,4 @@
-import validator from 'validator';
+const validator = require('validator');
 
 export function isValidUrl(url) {
   if (validator.isEmail(url)) {
@@ -12,3 +12,4 @@ export function isValidUrl(url) {
     require_tld: true,
   });
 }
+

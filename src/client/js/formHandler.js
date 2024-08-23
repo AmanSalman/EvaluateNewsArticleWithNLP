@@ -1,13 +1,15 @@
 const axios = require('axios');
 const { removeNullValues } = require('./removeNullValues.js');
 const { isValidUrl } = require('./isValidUrl.js');
+const { showLoader, hideLoader } = require('./loader.js');
 
-const serverURL = 'http://localhost:8080/analyze';
+const serverURL = 'http://localhost:4000/analyze';
 
 async function handleSubmit(event) {
   event.preventDefault();
   const url = document.getElementById('article-url').value;
   if (isValidUrl(url)) {
+    showLoader()
     try {
       const response = await axios.post(serverURL, { url });
       const data = response.data;
@@ -15,9 +17,11 @@ async function handleSubmit(event) {
 
       updateResults(data);
     } catch (error) {
-      console.error('Axios Error:', error); // Log the error for debugging
+      console.error('Axios Error:', error);
       const errorMessage = error.response ? error.response.data.message : error.message;
       document.getElementById('results-section').innerHTML = `<p>Error: ${errorMessage}</p>`;
+    }finally {
+      hideLoader()
     }
   } else {
     document.getElementById('results-section').innerHTML = `<p>Please enter a valid URL.</p>`;

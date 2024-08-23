@@ -19,7 +19,7 @@ form {
         margin-bottom: 1rem;
     }
 
-    input[type="text"] {
+    input {
         width: 100%;
         max-width: 500px;
         padding: 0.75rem;
@@ -58,4 +58,20 @@ form {
             animation: bounce 1s infinite;
         }
     }
+    input {
+        width: 100%;
+        max-width: 500px;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 2px solid $secondary-color;
+        border-radius: 25px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+    
+        &:focus {
+            border-color: $primary-color;
+        }
+    } 
 }
+

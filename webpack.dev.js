@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { HotModuleReplacementPlugin } = require('webpack');
 
 module.exports = {
   entry: './src/client/index.js',
@@ -11,12 +12,23 @@ module.exports = {
   },
   mode: 'development',
   devServer: {
-    static: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
     port: 9000,
     historyApiFallback: true,
-    open:true,
-    hot:false
+    open: true,
+    hot: true,
+    watchFiles: {
+      paths: ['src/**/*'],
+      options: {
+        usePolling: true,
+      },
+    },
+    client: {
+      logging: 'info',
+    },
   },
   module: {
     rules: [
@@ -39,5 +51,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
+    new HotModuleReplacementPlugin(),
   ],
 };
