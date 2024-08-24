@@ -33,9 +33,7 @@ The project demonstrates how to set up a basic Webpack configuration for bundlin
     ```
 6. **Run the server**:
     ```bash 
-    navigate to the src/server/
-    then run :
-    nodemon server.js or node server.js
+    npm run server
     ```
 ## Project Structure
 ├── src/
