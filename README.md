@@ -23,18 +23,22 @@ The project demonstrates how to set up a basic Webpack configuration for bundlin
     npm install
     ```
 
-4. **Build the project for production**:
-    ```bash
-    npm run build
-    ```
-5.  **Run the app in development mode**:
+4. **Start Development Server**:
     ```bash
     npm run start
+    ```
+5.  **Build for Production**:
+    ```bash
+    npm start
     ```
 6. **Run the server**:
     ```bash 
     npm run server
     ```
+7. **Run Tests**:
+    ```bash 
+    npm test
+    ``` 
 ## Project Structure
 ├── src/
 │ ├── client/
