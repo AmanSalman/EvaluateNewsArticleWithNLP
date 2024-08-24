@@ -1,56 +1,49 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { HotModuleReplacementPlugin } = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { GenerateSW } = require("workbox-webpack-plugin");
 
 module.exports = {
-  entry: './src/client/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-  },
-  mode: 'development',
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    compress: true,
-    port: 9000,
-    historyApiFallback: true,
-    open: true,
-    hot: true,
-    watchFiles: {
-      paths: ['src/**/*'],
-      options: {
-        usePolling: true,
-      },
-    },
-    client: {
-      logging: 'info',
-    },
-  },
+  entry: "./src/client/index.js",
+  mode: "development",
+  devtool: "source-map",
+  stats: "verbose",
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        loader: "babel-loader",
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
+  output: {
+    libraryTarget: "var",
+    library: "Client",
+  },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './src/client/views/index.html',
-      filename: 'index.html',
+      template: "./src/client/views/index.html",
+      filename: "./index.html",
     }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css',
+    new CleanWebpackPlugin({
+      dry: true,
+      verbose: true,
+      cleanStaleWebpackAssets: true,
+      protectWebpackAssets: false,
     }),
-    new HotModuleReplacementPlugin(),
+    new GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+    }),
   ],
+  devServer: {
+    port: 3000,
+    allowedHosts: "all",
+  },
 };

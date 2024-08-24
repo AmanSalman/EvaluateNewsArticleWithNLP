@@ -39,11 +39,7 @@ module.exports = {
       template: './src/client/views/index.html',
       filename: 'index.html',
     }),
-    new WorkboxPlugin.GenerateSW({
-      swDest: 'service-worker.js',
-      clientsClaim: true,
-      skipWaiting: true,
-  }),
+    new WorkboxPlugin.GenerateSW(),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
