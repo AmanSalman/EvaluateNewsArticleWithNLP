@@ -83,6 +83,7 @@ The project includes a service worker that gets registered when the app loads, e
         });
     }
 </script>
+```
 
 ## Test the Service Worker Registration
 
