@@ -89,7 +89,7 @@ The project includes a service worker that gets registered when the app loads, e
 
 ## Test the Service Worker Registration
 
-1. **Open your browser** and navigate to [http://localhost:9000](http://localhost:9000).
+1. **Open your browser** and navigate to [http://localhost:3000](http://localhost:3000).
 2. **Open Developer Tools**:
    - Press `F12` on your keyboard, or right-click on the page and select "Inspect".
 3. Go to the **"Console" tab** in Developer Tools.
