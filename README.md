@@ -76,13 +76,17 @@ The project demonstrates how to set up a basic Webpack configuration for bundlin
 The project includes a service worker that gets registered when the app loads, enabling offline support.
 
 ```html
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js');
-        });
-    }
-</script>
+		<script>
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', () => {
+					navigator.serviceWorker.register('/service-worker.js').then(registration => {
+						console.log('Service Worker registered with scope:', registration.scope);
+					}).catch(error => {
+						console.error('Service Worker registration failed:', error);
+					});
+				});
+			}
+		</script>
 ```
 
 ## Test the Service Worker Registration
