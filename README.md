@@ -4,7 +4,7 @@ This project is a simple Webpack setup that includes SCSS for styling, Babel for
 
 ## Project Description
 
-The project demonstrates how to set up a basic Webpack configuration for bundling JavaScript and SCSS files. It also includes a service worker for enabling offline capabilities.
+A simple website for analyzing news articles with NLP. Built with Webpack, SCSS, and Node.js. Features include real-time analysis and offline support.
 
 ## How to Run the App
 
