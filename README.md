@@ -29,11 +29,11 @@ A simple website for analyzing news articles with NLP. Built with Webpack, SCSS,
     ```
 6. **Start Development Server**:
     ```bash
-    npm run start
+    npm start
     ```
 7.  **Build for Production**:
     ```bash
-    npm start
+    npm run build
     ```
 8. **Run the server**:
     ```bash 
