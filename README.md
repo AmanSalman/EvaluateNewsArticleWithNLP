@@ -22,20 +22,24 @@ A simple website for analyzing news articles with NLP. Built with Webpack, SCSS,
     ```bash
     npm install
     ```
-
-4. **Start Development Server**:
+4. **Set Up Environment Variables**
+   ```bash
+   Create a .env file in the root of your project directory with the following content:
+    API_KEY=your_api_key
+    ```
+6. **Start Development Server**:
     ```bash
     npm run start
     ```
-5.  **Build for Production**:
+7.  **Build for Production**:
     ```bash
     npm start
     ```
-6. **Run the server**:
+8. **Run the server**:
     ```bash 
     npm run server
     ```
-7. **Run Tests**:
+9. **Run Tests**:
     ```bash 
     npm test
     ``` 
